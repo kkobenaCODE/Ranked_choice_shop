@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,26 +18,40 @@ class DefaultController extends AbstractController
     public function index(): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $prodList=$entityManager->getRepository(Product::class)->findAll();
+        $prodList = $entityManager->getRepository(Product::class)->findAll();
         dd($prodList);
-        return $this->render('main/default/index.html.twig',[]);
+        return $this->render('main/default/index.html.twig', []);
     }
 
     /**
-     * @Route("/product-add", name="product_add")
+     * @Route("/edit-product/{id}", methods = "GET|POST", name="product_edit" ,requirements={"id" = "\d+"})
+     * @Route("/add-product", methods = "GET|POST", name="product_add" )
      */
-        public function productAdd(Request $request) :Response
-        {
-            $product = new Product();
-            $product->setTitle('Product'.rand(1,100));
-            $product->setDescription('smthh');
-            $product->setPrice(222);
-            $product->setQuantity(3);
+    public function editProduct(Request $request, int $id = null): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
 
-            $entityManager = $this->getDoctrine()->getManager();
+        if ($id) {
+            $product = $entityManager->getRepository(Product::class)->find($id);
+        } else {
+            $product = new Product();
+        }
+
+        $form = $this->createFormBuilder($product)
+            ->add('title' , TextType::class)
+            ->getForm();
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
             $entityManager->persist($product);
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('product_edit',['id'=>$product->getId()]);
         }
+
+        return $this->render('main/default/edit_product.html.twig', [
+            'form'=>$form->createView()
+        ]);
+    }
 }
