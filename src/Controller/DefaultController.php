@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use phpDocumentor\Reflection\Types\Integer;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,6 +42,9 @@ class DefaultController extends AbstractController
 
         $form = $this->createFormBuilder($product)
             ->add('title' , TextType::class)
+            ->add('price' ,NumberType::class)
+            ->add('quantity' ,IntegerType::class)
+            ->add('description' ,TextType::class)
             ->getForm();
         $form->handleRequest($request);
 
