@@ -24,8 +24,6 @@ T
 $migrations/Version20220403084811.php,4/a/4a2b2180fc4d9a6327e90856fe85e2bea5232004
 4
 .env,3/c/3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
-_
-/templates/main/_embed/_flash_messages.html.twig,8/7/871c73e37002f7c636b05127494ba59f982dc923
 Y
 )templates/registration/register.html.twig,1/c/1c8c7e669830383faba8ed6ab3baf68e465540f5
 Q
@@ -38,3 +36,21 @@ T
 $migrations/Version20220403144900.php,0/d/0d32c02aa998ce3b3673a8a7a5b98e1c66a26c54
 T
 $migrations/Version20220403145159.php,5/4/545573608f57b58d25780de8ff23016a03ece123
+C
+src/Entity/User.php,0/a/0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be
+V
+&templates/main/profile/index.html.twig,7/4/74d89d8df0ede0832bff5a2fed739c45fac063c3
+P
+ src/Form/ProfileEditFormType.php,8/3/83741dbc9c207199d490b27b04aedc1a92ea43ad
+U
+%templates/main/profile/edit.html.twig,3/6/3651bdb175d61a7cd19000bfe23e2dcda72f9dca
+T
+$src/Controller/ProfileController.php,1/2/12a35d23b3c5dd69aeaae65dfd71813f4731d870
+Y
+)src/Controller/RegistrationController.php,b/6/b6a5dce1eac6107738aa6c9b363b605aa2315b2c
+T
+$src/Controller/DefaultController.php,8/b/8ba46e94b2ff4bd5f5bb93c4117e097f5130decc
+c
+3templates/main/_embed/_menu/_desktop_menu.html.twig,2/4/24a2c7b849322d0aae0a85e073cae3d55b0a016b
+b
+2templates/main/_embed/_menu/_mobile_menu.html.twig,a/6/a69c289b5f733054df05c43e71afb14029a39719
