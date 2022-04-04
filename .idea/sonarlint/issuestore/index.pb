@@ -26,3 +26,15 @@ $migrations/Version20220403084811.php,4/a/4a2b2180fc4d9a6327e90856fe85e2bea5232
 .env,3/c/3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
 _
 /templates/main/_embed/_flash_messages.html.twig,8/7/871c73e37002f7c636b05127494ba59f982dc923
+Y
+)templates/registration/register.html.twig,1/c/1c8c7e669830383faba8ed6ab3baf68e465540f5
+Q
+!src/Form/RegistrationFormType.php,9/5/95d4b58438357928efb9c5a862a6d289d874e878
+M
+templates/main/base.html.twig,d/2/d27ce6650625a436dffe492681fbacfbe37702e8
+R
+"templates/security/login.html.twig,8/9/89d5f9595fc54c90b0c2626c3e5e07e23a679864
+T
+$migrations/Version20220403144900.php,0/d/0d32c02aa998ce3b3673a8a7a5b98e1c66a26c54
+T
+$migrations/Version20220403145159.php,5/4/545573608f57b58d25780de8ff23016a03ece123
