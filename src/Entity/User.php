@@ -63,7 +63,7 @@ class User implements UserInterface
     private $zipcode;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $isDeleted;
 
