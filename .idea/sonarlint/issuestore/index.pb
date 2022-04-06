@@ -76,3 +76,13 @@ f
 6templates/admin/_embed/_utils/_flash_message.html.twig,2/4/245d3e0abd246f052bb0c01534bed67bd1bb8761
 _
 /templates/main/_embed/_flash_messages.html.twig,8/7/871c73e37002f7c636b05127494ba59f982dc923
+M
+config/packages/security.yaml,c/5/c5f941b4d4e9404f23935164fabdd261abb68e93
+]
+-src/Security/Admin/LoginFormAuthenticator.php,3/9/399b78a81818256d37d5ae042000e98c8723f016
+[
++src/Controller/Admin/SecurityController.php,b/6/b6b44050dd7b6a734e8a78c84de91b6ceb7eb670
+Y
+)templates/admin/pages/dashboard.html.twig,c/9/c918bdaea156990806a337dadc9e6ca79e493bb1
+\
+,src/Controller/Admin/DashboardController.php,3/a/3acc055723ea518defe4155e99f973ac20e2e524
