@@ -56,8 +56,6 @@ V
 &public/build/section-admin.e07769c5.js,f/2/f2c7c7cb511a39e96d7a2a62f1445af30fdc984d
 W
 'public/build/section-admin.728a21a0.css,8/1/818455d52ff77f529b33679d89641c19075d58e2
-N
-templates/admin/base.html.twig,1/e/1e73ed203fb0a7f9bd4ab9cf1661f4f394da52b1
 X
 (templates/admin/security/login.html.twig,7/2/7243def01054fdfc68fc1dd7b073a92ec344f103
 W
@@ -66,12 +64,8 @@ U
 %src/Controller/SecurityController.php,7/c/7cc876ecdb4df676c79a6188e9f3ac45e5079434
 b
 2templates/admin/layout/layout_empty_page.html.twig,8/a/8a79d30d678ca74346a0fbdc8fa0e1eed6fe8571
-_
-/templates/admin/_embed/_main/_sidebar.html.twig,c/6/c6c3a4a72bca873b64c8b63668beda685ee80820
 ^
 .templates/admin/_embed/_main/_topbar.html.twig,b/7/b7323b1435b0cb3ac3c231f7849ca6b223504d12
-\
-,templates/admin/layout/layout_main.html.twig,5/b/5bdadd81fd2c1d6ed441b9129f5bd90ecc11c160
 f
 6templates/admin/_embed/_utils/_flash_message.html.twig,2/4/245d3e0abd246f052bb0c01534bed67bd1bb8761
 _
@@ -82,7 +76,5 @@ M
 -src/Security/Admin/LoginFormAuthenticator.php,3/9/399b78a81818256d37d5ae042000e98c8723f016
 [
 +src/Controller/Admin/SecurityController.php,b/6/b6b44050dd7b6a734e8a78c84de91b6ceb7eb670
-Y
-)templates/admin/pages/dashboard.html.twig,c/9/c918bdaea156990806a337dadc9e6ca79e493bb1
 \
 ,src/Controller/Admin/DashboardController.php,3/a/3acc055723ea518defe4155e99f973ac20e2e524
