@@ -8,8 +8,6 @@ V
 &templates/main/default/index.html.twig,6/c/6c6d03e7dbf190b720478f7a3f5608d0f0ceceed
 T
 $migrations/Version20220402170045.php,b/b/bb5995b8972055f9694c512da848227e2d5cbb30
-F
-src/Entity/Product.php,4/3/43672f36815a1d5d48e2d6884176d0a297fbd86d
 Q
 !src/Repository/UserRepository.php,9/4/943a623b5e2fd95ea78f6287fc600a6f8e0a5235
 T

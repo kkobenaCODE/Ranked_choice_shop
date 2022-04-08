@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,8 +22,8 @@ class EditProductFormType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Title',
                 'required' => true,
-                'attr'=>[
-                  'class'=>'form-control'
+                'attr' => [
+                    'class' => 'form-control'
                 ],
                 'constraints' => [
                     new NotBlank([], 'Should be filled')
@@ -35,46 +36,53 @@ class EditProductFormType extends AbstractType
                 'html5' => true,
                 'attr' => [
                     'step' => '0.01',
-                    'class'=>'form-control',
-                    'min'=>0
+                    'class' => 'form-control',
+                    'min' => 0
                 ]
             ])
-            ->add('quantity' , IntegerType::class ,[
-                'label'=>'Quantity',
-                'required'=>true,
-                'attr'=>[
-                    'class'=>'form-control'
+            ->add('quantity', IntegerType::class, [
+                'label' => 'Quantity',
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
                 ]
             ])
-            ->add('description' , TextareaType::class,[
-                'label'=>'Description',
-                'required'=>true,
-                'attr'=>[
-                    'class'=>'form-control',
-                    'style'=>'overflow:hidden;'
+            ->add('description', TextareaType::class, [
+                'label' => 'Description',
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'overflow:hidden;'
                 ]
             ])
-            ->add('isPublished',CheckboxType::class,[
-                'label'=>'Is published',
-                'required'=>false,
-                'attr'=>[
-                    'class'=>'form-check-input'
+            ->add('newImage', FileType::class, [
+                'label' => 'Choose new image',
+                'required' => false,
+                'mapped' => false,
+                'attr' => [
+                    'class' => 'form-control-file'
+                ]
+            ])
+            ->add('isPublished', CheckboxType::class, [
+                'label' => 'Is published',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-check-input'
                 ],
-                'label_attr'=>[
-                    'class'=>'form-check-label'
+                'label_attr' => [
+                    'class' => 'form-check-label'
                 ]
             ])
-            ->add('isDeleted',CheckboxType::class,[
-                'label'=>'Is published',
-                'required'=>false,
-                'attr'=>[
-                    'class'=>'form-check-input'
+            ->add('isDeleted', CheckboxType::class, [
+                'label' => 'Is published',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-check-input'
                 ],
-                'label_attr'=>[
-                    'class'=>'form-check-label'
+                'label_attr' => [
+                    'class' => 'form-check-label'
                 ]
-            ])
-        ;
+            ]);
     }
 
 
