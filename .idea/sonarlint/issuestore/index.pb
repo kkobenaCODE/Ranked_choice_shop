@@ -6,14 +6,10 @@ W
 'templates/main/_embed/_footer.html.twig,b/5/b5c90adc4916c5b91c4e6a6c818a991f131653f2
 V
 &templates/main/default/index.html.twig,6/c/6c6d03e7dbf190b720478f7a3f5608d0f0ceceed
-]
--templates/main/default/edit_product.html.twig,8/a/8abfab2c7269e8695d8c0d5331a7f297f4d025b5
 T
 $migrations/Version20220402170045.php,b/b/bb5995b8972055f9694c512da848227e2d5cbb30
 F
 src/Entity/Product.php,4/3/43672f36815a1d5d48e2d6884176d0a297fbd86d
-P
- src/Form/EditProductFormType.php,b/e/beec168ed078214bf89a1c6609e12f249ce7fa9a
 Q
 !src/Repository/UserRepository.php,9/4/943a623b5e2fd95ea78f6287fc600a6f8e0a5235
 T
@@ -46,8 +42,6 @@ T
 $src/Controller/ProfileController.php,1/2/12a35d23b3c5dd69aeaae65dfd71813f4731d870
 Y
 )src/Controller/RegistrationController.php,b/6/b6a5dce1eac6107738aa6c9b363b605aa2315b2c
-T
-$src/Controller/DefaultController.php,8/b/8ba46e94b2ff4bd5f5bb93c4117e097f5130decc
 c
 3templates/main/_embed/_menu/_desktop_menu.html.twig,2/4/24a2c7b849322d0aae0a85e073cae3d55b0a016b
 b
@@ -78,3 +72,11 @@ M
 +src/Controller/Admin/SecurityController.php,b/6/b6b44050dd7b6a734e8a78c84de91b6ceb7eb670
 \
 ,src/Controller/Admin/DashboardController.php,3/a/3acc055723ea518defe4155e99f973ac20e2e524
+C
+src/Entity/User.php,0/a/0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be
+N
+src/Command/AddUserCommand.php,4/5/459cc26f0332592925357fcd6081ffe5ba2e1fe4
+Y
+)templates/admin/pages/dashboard.html.twig,c/9/c918bdaea156990806a337dadc9e6ca79e493bb1
+N
+templates/admin/base.html.twig,1/e/1e73ed203fb0a7f9bd4ab9cf1661f4f394da52b1

@@ -2,8 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Product;
+use App\Form\EditProductFormType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,9 +20,9 @@ class ProductController extends AbstractController
      */
     public function list(ProductRepository $productRepository): Response
     {
-        $products = $productRepository->findBy(['isDeleted'=>false] ,['id'=>'DESC'],50);
+        $products = $productRepository->findBy(['isDeleted' => false], ['id' => 'DESC'], 50);
         return $this->render('admin/product/list.html.twig', [
-            'products'=>$products
+            'products' => $products
         ]);
     }
 
@@ -27,9 +30,23 @@ class ProductController extends AbstractController
      * @Route("/edit/{id}", name="edit")
      * @Route("/add", name="add")
      */
-    public function edit(): Response
+    public function edit(Request $request, Product $product = null): Response
     {
-       //
+        $form = $this->createForm(EditProductFormType::class, $product);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $entityManager=$this->getDoctrine()->getManager();
+
+            $entityManager->persist($product);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin_product_edit' ,['id'=>$product->getId()]);
+        }
+        return $this->render('admin/product/edit.html.twig',[
+            'product'=>$product,
+            'form'=>$form->createView()
+        ]);
     }
 
     /**
