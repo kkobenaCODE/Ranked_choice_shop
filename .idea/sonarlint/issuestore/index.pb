@@ -78,3 +78,11 @@ Y
 )templates/admin/pages/dashboard.html.twig,c/9/c918bdaea156990806a337dadc9e6ca79e493bb1
 N
 templates/admin/base.html.twig,1/e/1e73ed203fb0a7f9bd4ab9cf1661f4f394da52b1
+e
+5templates/admin/_embed/_card/_header_action.html.twig,4/3/430b58e8706d354b5a9052734767d0e50e3f9728
+_
+/templates/admin/_embed/_main/_sidebar.html.twig,c/6/c6c3a4a72bca873b64c8b63668beda685ee80820
+\
+,templates/admin/layout/layout_main.html.twig,5/b/5bdadd81fd2c1d6ed441b9129f5bd90ecc11c160
+V
+&templates/admin/product/list.html.twig,8/c/8ce2eaf6ab43667a0796dcc2f1e01ea7b47d23a3

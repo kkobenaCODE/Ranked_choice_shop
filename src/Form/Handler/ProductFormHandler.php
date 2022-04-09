@@ -3,27 +3,42 @@
 namespace App\Form\Handler;
 
 use App\Entity\Product;
+use App\Utils\File\FileSaver;
+use App\Utils\Manager\ProductManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Form;
 
 class ProductFormHandler
 {
     /**
-     * @var EntityManagerInterface
+     * @var FileSaver
      */
-    private $entityManager;
+    private $fileSaver;
+    /**
+     * @var ProductManager
+     */
+    private $productManager;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(ProductManager $productManager, FileSaver $fileSaver)
     {
-        $this->entityManager = $entityManager;
+        $this->fileSaver = $fileSaver;
+        $this->productManager = $productManager;
     }
 
     public function processEditForm(Product $product, Form $form)
     {
-        $this->$entityManager->persist($product);
+        $this->productManager->save($product);
+
+        $newImageFile=$form->get('newImage')->getData();
+
+        $tempImageFilename = $newImageFile
+            ? $this->fileSaver->saveUploadedFileIntoTemp($newImageFile)
+            : null;
+        $this->productManager->updateProductImages($product , $tempImageFilename);
+
         //TODO:ADD A NEW IMAGE WITH DIFFERENT SIZES TO THE PRODUCT
-        //1. Save product's changes
-        //2. Save uploaded file in temporary directory
+        //1. Save product's changes +
+        //2. Save uploaded file in temporary directory +
         //3. Work with product (addProductImage) and ProductImage
         //3.1 Get path of folder with images
         //3.2 Work with ProductImage
@@ -32,7 +47,7 @@ class ProductFormHandler
         //3.3 Save Product with new ProductImage
 
         dd($product, $form->get('newImage')->getData());
-        $this->$entityManager->flush();
+        $this->productManager->save($product);
 
         return $product;
     }
