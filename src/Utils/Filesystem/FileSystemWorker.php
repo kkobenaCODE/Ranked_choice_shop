@@ -23,4 +23,13 @@ class FileSystemWorker{
             $this->filesystem->mkdir($folder);
         }
     }
+
+    /**
+     * @param string $item
+     */
+    public function remove(string $item){
+        if ($this->filesystem->exists($item)){
+            $this->filesystem->remove($item);
+        }
+    }
 }

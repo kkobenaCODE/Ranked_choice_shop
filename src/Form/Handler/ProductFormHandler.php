@@ -46,9 +46,7 @@ class ProductFormHandler
         //3.2.2 Create ProductImage and return to Product
         //3.3 Save Product with new ProductImage
 
-        dd($product, $form->get('newImage')->getData());
         $this->productManager->save($product);
-
         return $product;
     }
 }

@@ -84,5 +84,13 @@ _
 /templates/admin/_embed/_main/_sidebar.html.twig,c/6/c6c3a4a72bca873b64c8b63668beda685ee80820
 \
 ,templates/admin/layout/layout_main.html.twig,5/b/5bdadd81fd2c1d6ed441b9129f5bd90ecc11c160
-V
-&templates/admin/product/list.html.twig,8/c/8ce2eaf6ab43667a0796dcc2f1e01ea7b47d23a3
+L
+src/Utils/File/FileSaver.php,2/a/2a1a511019421518ff44eb6ef9e14512980675f3
+D
+config/services.yaml,8/7/87042d1f46b57381244d70e7a42feeb7710727dc
+>
+src/Kernel.php,a/5/a5d5cc43c07908e1476c934e4d03e47d43fb4fc3
+O
+src/Utils/File/ImageResizer.php,c/6/c652f62aa97e9e3ed6f2779a77f0cd6b19067fb8
+F
+src/Entity/Product.php,4/3/43672f36815a1d5d48e2d6884176d0a297fbd86d
