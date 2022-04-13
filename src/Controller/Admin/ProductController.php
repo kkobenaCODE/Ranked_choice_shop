@@ -32,26 +32,33 @@ class ProductController extends AbstractController
      * @Route("/edit/{id}", name="edit")
      * @Route("/add", name="add")
      */
-    public function edit(Request $request,ProductFormHandler $productFormHandler ,Product $product = null): Response
+    public function edit(Request $request, ProductFormHandler $productFormHandler, Product $product = null): Response
     {
+        if (!$product) {
+            $product = new Product();
+        }
         $form = $this->createForm(EditProductFormType::class, $product);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $productFormHandler->processEditForm($product , $form);
-            return $this->redirectToRoute('admin_product_edit' ,['id'=>$product->getId()]);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $productFormHandler->processEditForm($product, $form);
+            return $this->redirectToRoute('admin_product_edit', ['id' => $product->getId()]);
         }
-        return $this->render('admin/product/edit.html.twig',[
-            'images'=>$product->getProductImages()->getValues(),
-            'product'=>$product,
-            'form'=>$form->createView()
+        $images = $product->getProductImages()
+            ? $product->getProductImages()->getValues()
+            : [];
+        return $this->render('admin/product/edit.html.twig', [
+            'images' => $images,
+            'product' => $product,
+            'form' => $form->createView()
         ]);
     }
 
     /**
      * @Route("/delete/{id}", name="delete")
      */
-    public function delete(Product  $product ,ProductManager $productManager): Response
+    public function delete(Product $product, ProductManager $productManager): Response
     {
         $productManager->remove($product);
 

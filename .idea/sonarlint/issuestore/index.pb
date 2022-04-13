@@ -16,8 +16,6 @@ N
 src/Security/EmailVerifier.php,2/5/25e59371ba89f9e954d6b099fbe6b12c60340c70
 T
 $migrations/Version20220403084811.php,4/a/4a2b2180fc4d9a6327e90856fe85e2bea5232004
-4
-.env,3/c/3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
 Y
 )templates/registration/register.html.twig,1/c/1c8c7e669830383faba8ed6ab3baf68e465540f5
 Q
@@ -92,5 +90,3 @@ D
 src/Kernel.php,a/5/a5d5cc43c07908e1476c934e4d03e47d43fb4fc3
 O
 src/Utils/File/ImageResizer.php,c/6/c652f62aa97e9e3ed6f2779a77f0cd6b19067fb8
-F
-src/Entity/Product.php,4/3/43672f36815a1d5d48e2d6884176d0a297fbd86d
