@@ -7,14 +7,10 @@ use App\Entity\ProductImage;
 use App\Utils\File\ImageResizer;
 use App\Utils\Filesystem\FileSystemWorker;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ObjectRepository;
 
-class ProductImageManager
+class ProductImageManager extends AbstractBaseManager
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
     /**
      * @var FileSystemWorker
      */
@@ -31,11 +27,18 @@ class ProductImageManager
 
     public function __construct(EntityManagerInterface $entityManager, FileSystemWorker $fileSystemWorker, ImageResizer $imageResizer, string $uploadsTempDir)
     {
-
-        $this->entityManager = $entityManager;
+        parent::__construct($entityManager);
         $this->fileSystemWorker = $fileSystemWorker;
         $this->uploadsTempDir = $uploadsTempDir;
         $this->imageResizer = $imageResizer;
+    }
+
+    /**
+     * @return ObjectRepository
+     */
+    public function getRepository(): ObjectRepository
+    {
+        return $this->entityManager->getRepository(ProductImage::class);
     }
 
     /**
@@ -88,15 +91,15 @@ class ProductImageManager
      * @param ProductImage $productImage
      * @param string $productDir
      */
-    public function removeImageFromProduct (ProductImage $productImage , string $productDir)
+    public function removeImageFromProduct(ProductImage $productImage, string $productDir)
     {
-        $smallFilePath = $productDir.'/'.$productImage->getFilenameSmall();
+        $smallFilePath = $productDir . '/' . $productImage->getFilenameSmall();
         $this->fileSystemWorker->remove($smallFilePath);
 
-        $middleFilePath = $productDir.'/'.$productImage->getFilenameMiddle();
+        $middleFilePath = $productDir . '/' . $productImage->getFilenameMiddle();
         $this->fileSystemWorker->remove($middleFilePath);
 
-        $bigFilePath = $productDir.'/'.$productImage->getFilenameBIG();
+        $bigFilePath = $productDir . '/' . $productImage->getFilenameBIG();
         $this->fileSystemWorker->remove($bigFilePath);
 
         $product = $productImage->getProduct();

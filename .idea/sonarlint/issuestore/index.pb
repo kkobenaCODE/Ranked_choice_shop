@@ -36,8 +36,6 @@ U
 %templates/main/profile/edit.html.twig,3/6/3651bdb175d61a7cd19000bfe23e2dcda72f9dca
 T
 $src/Controller/ProfileController.php,1/2/12a35d23b3c5dd69aeaae65dfd71813f4731d870
-Y
-)src/Controller/RegistrationController.php,b/6/b6a5dce1eac6107738aa6c9b363b605aa2315b2c
 c
 3templates/main/_embed/_menu/_desktop_menu.html.twig,2/4/24a2c7b849322d0aae0a85e073cae3d55b0a016b
 b
@@ -50,8 +48,6 @@ X
 (templates/admin/security/login.html.twig,7/2/7243def01054fdfc68fc1dd7b073a92ec344f103
 W
 'src/Security/LoginFormAuthenticator.php,5/8/58103073fd1d1900e366a38250f7db278e4f59eb
-U
-%src/Controller/SecurityController.php,7/c/7cc876ecdb4df676c79a6188e9f3ac45e5079434
 b
 2templates/admin/layout/layout_empty_page.html.twig,8/a/8a79d30d678ca74346a0fbdc8fa0e1eed6fe8571
 ^
@@ -90,3 +86,9 @@ D
 src/Kernel.php,a/5/a5d5cc43c07908e1476c934e4d03e47d43fb4fc3
 O
 src/Utils/File/ImageResizer.php,c/6/c652f62aa97e9e3ed6f2779a77f0cd6b19067fb8
+=
+composer.json,3/9/3957b91a0d8450cea0115cfd5af69eac90d75897
+<
+package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
+Y
+)src/Utils/Filesystem/FileSystemWorker.php,f/a/fa9af8f8f5be3c5187eca9e299f9bf7aed01add8
