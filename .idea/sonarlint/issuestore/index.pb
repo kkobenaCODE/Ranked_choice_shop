@@ -6,24 +6,14 @@ W
 'templates/main/_embed/_footer.html.twig,b/5/b5c90adc4916c5b91c4e6a6c818a991f131653f2
 V
 &templates/main/default/index.html.twig,6/c/6c6d03e7dbf190b720478f7a3f5608d0f0ceceed
-T
-$migrations/Version20220402170045.php,b/b/bb5995b8972055f9694c512da848227e2d5cbb30
 Q
 !src/Repository/UserRepository.php,9/4/943a623b5e2fd95ea78f6287fc600a6f8e0a5235
-T
-$migrations/Version20220403084337.php,e/6/e646be017755a834e240d377fa2540acf3e07e68
 N
 src/Security/EmailVerifier.php,2/5/25e59371ba89f9e954d6b099fbe6b12c60340c70
-T
-$migrations/Version20220403084811.php,4/a/4a2b2180fc4d9a6327e90856fe85e2bea5232004
-Y
-)templates/registration/register.html.twig,1/c/1c8c7e669830383faba8ed6ab3baf68e465540f5
 Q
 !src/Form/RegistrationFormType.php,9/5/95d4b58438357928efb9c5a862a6d289d874e878
 M
 templates/main/base.html.twig,d/2/d27ce6650625a436dffe492681fbacfbe37702e8
-R
-"templates/security/login.html.twig,8/9/89d5f9595fc54c90b0c2626c3e5e07e23a679864
 T
 $migrations/Version20220403144900.php,0/d/0d32c02aa998ce3b3673a8a7a5b98e1c66a26c54
 T
@@ -92,3 +82,19 @@ O
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
 Y
 )src/Utils/Filesystem/FileSystemWorker.php,f/a/fa9af8f8f5be3c5187eca9e299f9bf7aed01add8
+Z
+*src/Controller/Admin/ProductController.php,6/b/6be2ada047cc65a3763b38acb3ff1d79e10a4849
+W
+'src/Form/Handler/ProductFormHandler.php,0/6/06d58dfe5947ac332cfe5bb3ea939e2877bf58a2
+P
+ src/Form/EditProductFormType.php,b/e/beec168ed078214bf89a1c6609e12f249ce7fa9a
+c
+3templates/admin/_embed/_card/_breadcrumbs.html.twig,4/c/4c6d02ac8cf783c0926563612e8114c6c2ae2073
+V
+&templates/admin/product/list.html.twig,8/c/8ce2eaf6ab43667a0796dcc2f1e01ea7b47d23a3
+U
+%src/Controller/SecurityController.php,7/c/7cc876ecdb4df676c79a6188e9f3ac45e5079434
+Y
+)src/Controller/RegistrationController.php,b/6/b6a5dce1eac6107738aa6c9b363b605aa2315b2c
+V
+&templates/admin/product/edit.html.twig,f/2/f28a6515c51f9d4bbbb453761ab0c22a9d8584ec
