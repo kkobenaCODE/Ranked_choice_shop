@@ -82,19 +82,9 @@ O
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
 Y
 )src/Utils/Filesystem/FileSystemWorker.php,f/a/fa9af8f8f5be3c5187eca9e299f9bf7aed01add8
-Z
-*src/Controller/Admin/ProductController.php,6/b/6be2ada047cc65a3763b38acb3ff1d79e10a4849
-W
-'src/Form/Handler/ProductFormHandler.php,0/6/06d58dfe5947ac332cfe5bb3ea939e2877bf58a2
-P
- src/Form/EditProductFormType.php,b/e/beec168ed078214bf89a1c6609e12f249ce7fa9a
-c
-3templates/admin/_embed/_card/_breadcrumbs.html.twig,4/c/4c6d02ac8cf783c0926563612e8114c6c2ae2073
 V
 &templates/admin/product/list.html.twig,8/c/8ce2eaf6ab43667a0796dcc2f1e01ea7b47d23a3
 U
 %src/Controller/SecurityController.php,7/c/7cc876ecdb4df676c79a6188e9f3ac45e5079434
 Y
 )src/Controller/RegistrationController.php,b/6/b6a5dce1eac6107738aa6c9b363b605aa2315b2c
-V
-&templates/admin/product/edit.html.twig,f/2/f28a6515c51f9d4bbbb453761ab0c22a9d8584ec

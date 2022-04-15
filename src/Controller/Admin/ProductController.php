@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Product;
+use App\Form\DTO\EditProductModel;
 use App\Form\EditProductFormType;
 use App\Form\Handler\ProductFormHandler;
 use App\Repository\ProductRepository;
@@ -34,18 +35,16 @@ class ProductController extends AbstractController
      */
     public function edit(Request $request, ProductFormHandler $productFormHandler, Product $product = null): Response
     {
-        if (!$product) {
-            $product = new Product();
-        }
-        $form = $this->createForm(EditProductFormType::class, $product);
+        $editProductModel = EditProductModel::makeFromProduct($product);
+        $form = $this->createForm(EditProductFormType::class, $editProductModel);
         $form->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $productFormHandler->processEditForm($product, $form);
+           $product = $productFormHandler->processEditForm($editProductModel, $form);
             return $this->redirectToRoute('admin_product_edit', ['id' => $product->getId()]);
         }
-        $images = $product->getProductImages()
+        $images = $product
             ? $product->getProductImages()->getValues()
             : [];
         return $this->render('admin/product/edit.html.twig', [
