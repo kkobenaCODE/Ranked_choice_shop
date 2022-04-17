@@ -29,8 +29,19 @@ class Category
      */
     private $products;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isDeleted;
+
+    /**
+     * @ORM\Column(type="string", length=128, nullable=true)
+     */
+    private $slug;
+
     public function __construct()
     {
+        $this->isDeleted = false;
         $this->products = new ArrayCollection();
     }
 
@@ -46,7 +57,7 @@ class Category
 
     public function setTitle(string $title): self
     {
-        $this->title = $title;
+        $this->title = ucfirst(strtolower($title));
 
         return $this;
     }
@@ -77,6 +88,30 @@ class Category
                 $product->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
+
+    public function setIsDeleted(?bool $isDeleted): self
+    {
+        $this->isDeleted = $isDeleted;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

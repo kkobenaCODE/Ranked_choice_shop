@@ -70,6 +70,11 @@ class Product
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="string", length=128, nullable=true)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->uuid= Uuid::v4();
@@ -211,6 +216,18 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
