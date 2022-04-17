@@ -25,9 +25,16 @@
                     </div>
                 </div>
             </div>
-
-
-
+            {% if product %}
+                <div class="form-group row">
+                    <div class="col-md-1">
+                        Slug
+                    </div>
+                    <div class="col-md-11">
+                        {{ product.slug }}
+                    </div>
+                </div>
+            {% endif %}
             <div class="form-group row">
                 <div class="col-md-1">
                     {{ form_label(form.price) }}
@@ -98,10 +105,12 @@
                 {% for image in images %}
                     <div class="row mt-2">
                         <div class="col-md-5">
-                            <img src="{{ asset('uploads/images/products/' ~ product.id ~ '/' ~ image.filenameMiddle) }}" alt="{{ image.filenameMiddle }}">
+                            <img src="{{ asset('uploads/images/products/' ~ product.id ~ '/' ~ image.filenameMiddle) }}"
+                                 alt="{{ image.filenameMiddle }}">
                         </div>
                         <div class="col-md-7">
-                            <a href="{{ path('admin_product_image_delete', {'id': image.id}) }}" class="btn btn-outline-info">
+                            <a href="{{ path('admin_product_image_delete', {'id': image.id}) }}"
+                               class="btn btn-outline-info">
                                 DELETE
                             </a>
                         </div>

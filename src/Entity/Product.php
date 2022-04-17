@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -71,7 +72,8 @@ class Product
     private $category;
 
     /**
-     * @ORM\Column(type="string", length=128, nullable=true)
+     * @Gedmo\Slug(fields = {"title"})
+     * @ORM\Column(type="string", length=128, nullable=false)
      */
     private $slug;
 
