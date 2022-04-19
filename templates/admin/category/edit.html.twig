@@ -25,6 +25,7 @@
                     </div>
                 </div>
             </div>
+            {% if category%}
             <div class="form-group row">
                 <div class="col-md-1">
                     Slug
@@ -33,6 +34,7 @@
                     {{ category.slug }}
                 </div>
             </div>
+            {% endif %}
             <hr/>
             {% include 'admin/_embed/_card/_form_buttons.html.twig' with {
                 'entity': category,

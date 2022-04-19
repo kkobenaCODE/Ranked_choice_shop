@@ -3,14 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
-use App\Entity\Product;
+use App\Form\Admin\EditCategoryFormType;
 use App\Form\DTO\EditCategoryModel;
-use App\Form\EditCategoryFormType;
 use App\Form\Handler\CategoryFormHandler;
-use App\Form\Handler\ProductFormHandler;
 use App\Repository\CategoryRepository;
 use App\Utils\Manager\CategoryManager;
-use App\Utils\Manager\ProductManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
