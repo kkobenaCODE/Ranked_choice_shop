@@ -74,6 +74,7 @@
         General
     </div>
 
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
            aria-expanded="true" aria-controls="collapseUsers">
@@ -87,6 +88,7 @@
             </div>
         </div>
     </li>
+    {% endif %}
 
     <hr class="sidebar-divider d-none d-md-block">
 

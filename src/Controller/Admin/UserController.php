@@ -2,10 +2,12 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\StaticStorage\UserStaticStorage;
 use App\Entity\User;
 use App\Form\Admin\EditUserFormType;
 use App\Form\Handler\UserFormHandler;
 use App\Repository\UserRepository;
+use App\Utils\Manager\UserManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,7 +48,7 @@ class UserController extends AbstractController
 
             $this->addFlash('success','Your changes was saving correctly.');
 
-            return $this->redirectToRoute('admin_category_edit', ['id' => $user->getId()]);
+            return $this->redirectToRoute('admin_user_edit', ['id' => $user->getId()]);
         }
 
         if ($form->isSubmitted() && !$form->isValid()) {
@@ -63,11 +65,11 @@ class UserController extends AbstractController
     /**
      * @Route("/delete/{id}", name="delete")
      */
-    public function delete(User $user , CategoryManager $categoryManager): Response
+    public function delete(User $user , UserManager $userManager): Response
     {
-//        $categoryManager->remove($category);
-//        $this->addFlash('warning' , 'Category was successfully deleted.');
-        return $this->redirectToRoute('admin_category_list');
+        $userManager->remove($user);
+        $this->addFlash('warning' , 'User was successfully deleted.');
+        return $this->redirectToRoute('admin_user_list');
     }
 
 }
