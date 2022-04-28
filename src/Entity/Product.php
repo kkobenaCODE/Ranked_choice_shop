@@ -8,8 +8,26 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
 use Gedmo\Mapping\Annotation as Gedmo;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ *     collectionOperations={
+ *     "get"={
+ *          "normalization_context"={"groups"="product:list"}
+ *     },
+ *     "post"={
+ *          "security"="is_granted('ROLE_ADMIN')",
+ *          "normalization_context"={"groups"="product:list:write"}
+ *      }
+ *    },
+ *     itemOperations={
+ *     "get"={},
+ *     "put"={}
+ *     }
+ *   )
+ *
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
 class Product
@@ -18,26 +36,31 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"product:list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="uuid")
+     * @Groups({"product:list"})
      */
     private $uuid;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"product:list" ,"product:list:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="decimal", precision=6, scale=2)
+     * @Groups({"product:list" ,"product:list:write"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"product:list" ,"product:list:write"})
      */
     private $quantity;
 
@@ -47,7 +70,7 @@ class Product
     private $createdAt;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text" , nullable=true)
      */
     private $description;
 
@@ -68,6 +91,7 @@ class Product
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     * @Groups({"product:list" ,"product:list:write"})
      */
     private $category;
 
@@ -89,7 +113,7 @@ class Product
 
     public function __construct()
     {
-        $this->uuid= Uuid::v4();
+        $this->uuid = Uuid::v4();
         $this->createdAt = new \DateTimeImmutable();
         $this->isPublished = false;
         $this->isDeleted = false;
