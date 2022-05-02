@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -10,24 +11,43 @@ use Symfony\Component\Uid\Uuid;
 use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ApiResource(
  *     collectionOperations={
- *     "get"={
- *          "normalization_context"={"groups"="product:list"}
+ *          "get"={
+ *              "normalization_context"={"groups"="product:list"}
+ *          },
+ *          "post"={
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "normalization_context"={"groups"="product:list:write"}
+ *          }
  *     },
- *     "post"={
- *          "security"="is_granted('ROLE_ADMIN')",
- *          "normalization_context"={"groups"="product:list:write"}
- *      }
- *    },
  *     itemOperations={
- *     "get"={},
- *     "put"={}
- *     }
- *   )
- *
+ *          "get"={
+ *              "normalization_context"={"groups"="product:item"}
+ *          },
+ *          "patch"={
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "normalization_context"={"groups"="product:item:write"}
+ *          }
+ *     },
+ *     order={
+ *          "id"="DESC"
+ *     },
+ *     attributes={
+ *          "pagination_client_items_per_page"=true,
+ *          "formats"={"jsonld", "json"}
+ *     },
+ *     paginationEnabled=true
+ * )
+ * @ApiFilter(BooleanFilter::class, properties={"isPublished"})
+ * @ApiFilter(SearchFilter::class, properties={
+ *      "category": "exact"
+ *     })
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
 class Product
@@ -36,31 +56,33 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ApiProperty(identifier=false)
      * @Groups({"product:list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="uuid")
+     * @ApiProperty(identifier=true)
      * @Groups({"product:list"})
      */
     private $uuid;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"product:list" ,"product:list:write"})
+     * @Groups({"product:list", "product:item", "product:list:write", "product:item:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="decimal", precision=6, scale=2)
-     * @Groups({"product:list" ,"product:list:write"})
+     * @Groups({"product:list", "product:item", "product:list:write", "product:item:write"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"product:list" ,"product:list:write"})
+     * @Groups({"product:list", "product:item", "product:list:write", "product:item:write"})
      */
     private $quantity;
 
@@ -91,7 +113,7 @@ class Product
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
-     * @Groups({"product:list" ,"product:list:write"})
+     * @Groups({"product:list", "product:item", "product:list:write", "product:item:write"})
      */
     private $category;
 
