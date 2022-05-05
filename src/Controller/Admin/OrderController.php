@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Order;
+use App\Entity\OrderProduct;
 use App\Entity\StaticStorage\OrderStaticStorage;
 use App\Form\Admin\EditOrderFormType;
 use App\Form\Handler\OrderFormHandler;
@@ -34,29 +35,48 @@ class OrderController extends AbstractController
      * @Route("/edit/{id}", name="edit")
      * @Route("/add", name="add")
      */
-    public function edit(Request $request,OrderFormHandler $orderFormHandler,Order $order = null): Response
+    public function edit(Request $request, OrderFormHandler $orderFormHandler, Order $order = null): Response
     {
-        if(!$order){
+        if (!$order) {
             $order = new Order();
         }
 
-        $form = $this->createForm(EditOrderFormType::class , $order);
+        $form = $this->createForm(EditOrderFormType::class, $order);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $order = $orderFormHandler->processEditForm($order);
 
-            $this->addFlash('success','Your changes was saving correctly.');
+            $this->addFlash('success', 'Your changes was saving correctly.');
 
             return $this->redirectToRoute('admin_order_edit', ['id' => $order->getId()]);
         }
 
         if ($form->isSubmitted() && !$form->isValid()) {
-            $this->addFlash('warning','Something went wrong.Check your form please.');
+            $this->addFlash('warning', 'Something went wrong.Check your form please.');
+        }
+        $orderProducts = [];
+        /**@var OrderProduct $product */
+
+        foreach ($order->getOrderProducts()->getValues() as $product) {
+            $orderProducts[] = [
+                'id' => $product->getId(),
+                'product' => [
+                    'id' => $product->getProduct()->getId(),
+                    'title'=>$product->getProduct()->getTitle(),
+                    'category' => [
+                'id' => $product->getProduct()->getCategory()->getId(),
+                'title' => $product->getProduct()->getCategory()->getTitle()
+            ]
+                ],
+                'quantity'=> $product->getQuantity(),
+                'pricePerOne' => $product->getPricePerOne()
+            ];
         }
 
         return $this->render('admin/order/edit.html.twig', [
             'order' => $order,
+            'orderProducts' => $orderProducts,
             'form' => $form->createView()
         ]);
     }

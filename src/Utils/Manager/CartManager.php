@@ -3,10 +3,9 @@
 namespace App\Utils\Manager;
 
 use App\Entity\Cart;
-use App\Entity\Product;
 use Doctrine\Persistence\ObjectRepository;
 
-class CartManager
+class CartManager extends AbstractBaseManager
 {
     /**
      * @return ObjectRepository

@@ -27,8 +27,8 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                {% for cartProduct in cartProducts %}
-                                                    {% set product = cartProducr.product %}
+                                                {% for cartProduct in cart.cartProducts %}
+                                                    {% set product = cartProduct.product %}
                                                     {% set images = product.getProductImages().getValues() %}
                                                     <tr>
                                                         <td class="product-col">
