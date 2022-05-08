@@ -6,9 +6,27 @@ use App\Repository\CartRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CartRepository::class)
+ *    @ApiResource(
+ *     collectionOperations={
+ *          "get"={
+ *              "normalization_context"={"groups"="cart:list"}
+ *          },
+ *          "post"={
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "normalization_context"={"groups"="cart:list:write"}
+ *          }
+ *     },
+ *     itemOperations={
+ *     "get" = {
+ *          "normalization_context"={"groups"="cart:item"}
+ *     }
+ *      }
+ * )
  */
 class Cart
 {
@@ -16,11 +34,13 @@ class Cart
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"cart:item" , "cart:list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"cart:item","cart:list"})
      */
     private $sessionId;
 
@@ -31,6 +51,7 @@ class Cart
 
     /**
      * @ORM\OneToMany(targetEntity=CartProduct::class, mappedBy="cart")
+     * @Groups({"cart:item" , "cart:list"})
      */
     private $cartProducts;
 

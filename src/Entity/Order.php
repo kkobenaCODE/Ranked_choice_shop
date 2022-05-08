@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
- *  * @ApiResource(
+ *   @ApiResource(
  *     collectionOperations={
  *          "get"={
  *              "normalization_context"={"groups"="order:list"}
