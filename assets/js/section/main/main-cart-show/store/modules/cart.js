@@ -21,7 +21,11 @@ const state = () => ({
             viewProduct: window.staticStore.urlViewProduct,
             assetImageProducts: window.staticStore.urlAssetImageProducts,
             apiCartProduct: window.staticStore.urlCartProduct,
-            apiOrder: window.staticStore.urlOrder
+            apiOrder: window.staticStore.urlOrder,
+            loginPage: window.staticStore.urlLoginPage,
+        },
+        user: {
+            isLoggedIn: window.staticStore.isUserLoggedIn
         }
     }
 });
