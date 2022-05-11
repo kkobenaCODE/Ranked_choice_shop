@@ -24,7 +24,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     itemOperations={
  *     "get" = {
  *          "normalization_context"={"groups"="cart:item"}
- *     }
+ *     },
+ *     "delete" = {}
  *      }
  * )
  */
