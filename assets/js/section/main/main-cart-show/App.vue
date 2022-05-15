@@ -47,7 +47,7 @@ export default {
       return !this.isSentForm && Object.keys(this.cart).length;
     },
     isNotEmptyCart(){
-      return this.cart.cartProduct.length;
+      return this.cart.cartProducts.length;
     },
     isUserLoggedIn(){
       return this.staticStore.user.isLoggedIn;

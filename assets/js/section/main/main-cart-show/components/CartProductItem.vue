@@ -27,10 +27,11 @@
              type="number"
              class="form-control"
              min="1"
+             :max="productQuantityMax"
              step="1"
              @focusout="updateQuantity"
              @change="updateMaxValues($event , 'quantity' ,'productQuantityMax')">
-      >
+
     </td>
     <td class="total-col">
       ${{ productPrice }}
@@ -69,7 +70,6 @@ export default {
   computed: {
     ...mapState("cart", ["staticStore"]),
     productImage() {
-      console.log(this.cartProduct.product);
       const productImages = this.cartProduct.product.productImages;
       return productImages.length ? productImages[0] : null;
     },
