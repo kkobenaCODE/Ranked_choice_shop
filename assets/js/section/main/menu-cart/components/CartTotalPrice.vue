@@ -1,7 +1,7 @@
 <template>
   <div class="total">
     <span>Total</span>
-    <span class="total-price">${{totalPrice}}</span>
+    <span class="total-price">${{ totalPrice }}</span>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import {mapGetters} from "vuex";
 export default {
   name: "CartTotalPrice",
   computed: {
-    ...mapGetters("cart" , ["totalPrice"])
+    ...mapGetters("cart", ["totalPrice"])
   }
 }
 </script>

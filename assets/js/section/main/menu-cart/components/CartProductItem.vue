@@ -3,30 +3,38 @@
     <div class="product-details">
       <h4 class="product-title">
         <a
-            :href="urlShowProduct"
-            target="_blank">
-          {{ cartProduct.product.title}}
+          :href="urlShowProduct"
+          target="_blank"
+        >
+          {{ cartProduct.product.title }}
         </a>
       </h4>
+
       <span class="product-info">
         <span class="product-quantity">
-          {{cartProduct.quantity}}
+          {{ cartProduct.quantity }}
         </span>
-        X ${{cartProduct.product.price}}
+        X ${{ cartProduct.product.price }}
       </span>
     </div>
     <figure class="product-image-container">
-      <a :href="urlShowProduct"
-         target="_blank">
-        <img :src="getUrlProductImage(productImage)"
-             :class="product-image"
-             :alt="cartProduct.product.title">
+      <a
+        :href="urlShowProduct"
+        target="_blank"
+      >
+        <img
+            :src="getUrlProductImage(productImage)"
+            class="product-image"
+            :alt="cartProduct.product.title"
+        >
       </a>
     </figure>
-    <a href="#"
-       class="btn-remove"
-       title="Remove product"
-       @click="removeCartProduct(cartProduct.id)">
+    <a
+      href="#"
+      class="btn-remove"
+      title="Remove product"
+      @click="removeCartProduct(cartProduct.id)"
+    >
       X
     </a>
   </div>
@@ -47,6 +55,7 @@ export default {
     ...mapState("cart", ["staticStore"]),
     productImage() {
       const productImages = this.cartProduct.product.productImages;
+
       return productImages.length ? productImages[0] : null;
     },
     urlShowProduct() {
@@ -54,7 +63,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions("cart" , ["removeCartProduct"]),
+    ...mapActions("cart", ["removeCartProduct"]),
     getUrlProductImage(productImage) {
       return (
           this.staticStore.url.assetImageProducts +
@@ -64,10 +73,7 @@ export default {
           productImage.filenameSmall
       );
     },
-
   }
-
-
 }
 </script>
 
