@@ -49,17 +49,6 @@ class MakeOrderFromCartSubscriber implements EventSubscriberInterface
             return;
         }
 
-
-
-        $order = $this->orderManager->find(14);
-        $event = new OrderCreatedFromCartEvent($order);
-        $this->eventDispatcher->dispatch($event);
-        dd('text from makeorder');
-
-
-
-
-
         /** @var User $user */
         $user = $this->security->getUser();
         if(!$user) {
@@ -94,8 +83,8 @@ class MakeOrderFromCartSubscriber implements EventSubscriberInterface
             return;
         }
 
-//        $event = new OrderCreatedFromCartEvent($order);
-//        $this->eventDispatcher->dispatch($event);
+        $event = new OrderCreatedFromCartEvent($order);
+        $this->eventDispatcher->dispatch($event);
     }
 
     public static function getSubscribedEvents()

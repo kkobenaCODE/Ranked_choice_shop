@@ -10,7 +10,7 @@ class MailerOptions
     private $recipient;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $cc;
 
@@ -54,7 +54,7 @@ class MailerOptions
     /**
      * @return string
      */
-    public function getCc(): string
+    public function getCc(): ?string
     {
         return $this->cc;
     }
