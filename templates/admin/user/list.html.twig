@@ -20,6 +20,8 @@
                         <th>Role</th>
                         <th>Profile info</th>
                         <th>Is email verified</th>
+                        <th>From facebook</th>
+                        <th>From Goolgle</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,6 +55,12 @@
                                 {% else %}
                             <p style="color: darkred; font-weight: bold;">not verified</p>
                                 {%endif%}
+                        </td>
+                        <td>
+                            {% user.facebookId %}+{% endif %}
+                        </td>
+                        <td>
+                            {% user.googleId %}+{% endif %}
                         </td>
                         <td>
                             <a href="{{ path('admin_user_edit', {'id': user.id}) }}"
