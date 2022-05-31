@@ -1,4 +1,13 @@
-controllers:
+controllers_main:
+    resource: ../../src/Controller/Main/
+    type: annotation
+    prefix: /{_locale}
+    requirements:
+        _locale: '%app_locales%'
+    defaults:
+        _locale: '%locale%'
+
+controllers_admin:
     resource: ../../src/Controller/
     type: annotation
 

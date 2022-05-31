@@ -20,7 +20,7 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
-    private EmailVerifier $emailVerifier;
+    private $emailVerifier;
 
     public function __construct(EmailVerifier $emailVerifier)
     {
@@ -28,7 +28,12 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/registration", name="main_registration")
+     * @Route({
+     *  "en":"/registration",
+     *  "fr":"/creation-de-compte",
+     *  "ru":"/registration"
+     *     },
+     *     name="main_registration")
      */
     public function registration(Request $request, UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager): Response
     {

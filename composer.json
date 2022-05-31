@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=7.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
@@ -20,6 +20,7 @@
         "league/oauth2-facebook": "^2.2",
         "league/oauth2-google": "^4.0",
         "nelmio/cors-bundle": "^2.2",
+        "php-translation/symfony-bundle": "^0.12.1",
         "phpdocumentor/reflection-docblock": "^5.3",
         "sensio/framework-extra-bundle": "^5.1",
         "stof/doctrine-extensions-bundle": "^1.7",

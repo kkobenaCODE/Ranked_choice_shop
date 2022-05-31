@@ -160,6 +160,11 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/league/oauth2-facebook" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cweagans/composer-patches" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/league/oauth2-google" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-translation/common" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-translation/symfony-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-translation/symfony-storage" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-translation/extractor" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nyholm/nsa" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
