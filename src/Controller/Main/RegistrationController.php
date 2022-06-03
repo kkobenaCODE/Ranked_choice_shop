@@ -4,6 +4,7 @@ namespace App\Controller\Main;
 
 use App\Entity\User;
 use App\Form\Main\RegistrationFormType;
+use App\Messenger\Message\Event\UserRegisteredEvent;
 use App\Repository\UserRepository;
 use App\Security\Verifier\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,6 +12,7 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -35,7 +37,7 @@ class RegistrationController extends AbstractController
      *     },
      *     name="main_registration")
      */
-    public function registration(Request $request, UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager): Response
+    public function registration(Request $request, UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager, MessageBusInterface $messageBus): Response
     {
         if ($this->getUser()) {
             return $this->redirectToRoute('main_profile_index');
@@ -53,20 +55,14 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('main_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('robot@ranked-choise.com', 'Robot'))
-                    ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('main/email/security/confirmation_email.html.twig')
-            );
-            // do anything else you need here, like send an email
+            $event = new UserRegisteredEvent($user->getId());
+            $messageBus->dispatch($event);
 
+            $this->addFlash('success' ,'An email has been sent. Check your inbox.');
             return $this->redirectToRoute('main_homepage');
         }
 
