@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class CartController extends AbstractController
 {
@@ -16,8 +17,8 @@ class CartController extends AbstractController
      */
     public function show(Request $request , CartRepository $cartRepository): Response
     {
-        $phpSessId = $request->cookies->get('PHPSESSID');
-        $cart = $cartRepository->findOneBy(['sessionId' =>$phpSessId]);
+        $cartToken = $request->cookies->get('CART_TOKEN');
+        $cart = $cartRepository->findOneBy(['token' =>$cartToken]);
 
         return $this->render('main/cart/show.html.twig', [
             'cart' => $cart,
@@ -29,9 +30,13 @@ class CartController extends AbstractController
      */
     public function create(Request $request ,OrderManager $orderManager): Response
     {
-        $phpSessId = $request->cookies->get('PHPSESSID');
+        $cartToken = $request->cookies->get('CART_TOKEN');
         $user = $this->getUser();
-        $orderManager->createOrderFromCartBySessionId($phpSessId , $user);
-        return $this->redirectToRoute('main_cart_show');
+        $orderManager->createOrderFromCartBySessionId($cartToken , $user);
+
+        $redirectUrl = $this->generateUrl('main_cart_show');
+
+        $response = new RedirectResponse($redirectUrl);
+        $response->headers->clearCookie('CART_TOKEN' ,'/' ,null);
     }
 }

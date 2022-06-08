@@ -39,11 +39,6 @@ class Cart
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"cart:item","cart:list"})
-     */
-    private $sessionId;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -56,6 +51,12 @@ class Cart
      */
     private $cartProducts;
 
+    /**
+     * @ORM\Column(type="string", length=255 , nullable=true)
+     * @Groups({"cart:item","cart:list" , "cart:list:write"})
+     */
+    private $token;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -65,18 +66,6 @@ class Cart
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getSessionId(): ?string
-    {
-        return $this->sessionId;
-    }
-
-    public function setSessionId(string $sessionId): self
-    {
-        $this->sessionId = $sessionId;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable
@@ -117,6 +106,18 @@ class Cart
                 $cartProduct->setCart(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
 
         return $this;
     }

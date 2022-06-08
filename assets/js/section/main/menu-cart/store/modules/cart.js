@@ -2,6 +2,7 @@ import axios from "axios";
 import {StatusCodes} from "http-status-codes";
 import {apiConfig, apiConfigPatch} from "../../../../../utils/settings";
 import {concatUrlByParams} from "../../../../../utils/url-generator";
+import {setCookie} from "../../../../../utils/cookie-manager";
 
 const state = () => ({
     cart: {},
@@ -35,7 +36,7 @@ const getters = {
 };
 
 const actions = {
-    async getCart({ state, commit, dispatch }) {
+    async getCart({state, commit, dispatch}) {
         const url = state.staticStore.url.apiCart;
 
         const result = await axios.get(url, apiConfig);
@@ -50,7 +51,7 @@ const actions = {
             dispatch('createCart');
         }
     },
-    async cleanCart({ state, commit }) {
+    async cleanCart({state, commit}) {
         const url =
             concatUrlByParams(
                 state.staticStore.url.apiCart,
@@ -63,7 +64,7 @@ const actions = {
             commit('setCart', {});
         }
     },
-    async removeCartProduct({ state, commit, dispatch }, cartProductId) {
+    async removeCartProduct({state, commit, dispatch}, cartProductId) {
         const url = concatUrlByParams(
             state.staticStore.url.apiCartProduct,
             cartProductId
@@ -75,7 +76,10 @@ const actions = {
             dispatch('getCart');
         }
     },
-    addCartProduct({ state, dispatch }, productData) {
+    async addCartProduct({state, commit, dispatch}, productData) {
+        if (!state.cart.cartProducts) {
+            await dispatch('createCart');
+        }
         if (!productData.quantity) {
             productData.quantity = 1;
         }
@@ -93,7 +97,7 @@ const actions = {
             dispatch('addNewCartProduct', productData);
         }
     },
-    async createCart({ state, dispatch }) {
+    async createCart({state, dispatch}) {
         const url = state.staticStore.url.apiCart;
         const result = await axios.post(url, {}, apiConfig);
 
@@ -101,7 +105,7 @@ const actions = {
             dispatch('getCart');
         }
     },
-    async addExistCartProduct({ state, dispatch }, cartProductData) {
+    async addExistCartProduct({state, dispatch}, cartProductData) {
         const url = concatUrlByParams(
             state.staticStore.url.apiCartProduct,
             cartProductData.cartProductId
@@ -114,10 +118,11 @@ const actions = {
         const result = await axios.patch(url, data, apiConfigPatch);
 
         if (result.status === StatusCodes.OK) {
-            dispatch('getCart');
+            setCookie('CART_TOKEN', result.data.token, {secure: true, "max-age": 86400});
+            await dispatch('getCart');
         }
     },
-    async addNewCartProduct({ state, dispatch }, productData) {
+    async addNewCartProduct({state, dispatch}, productData) {
         const url = state.staticStore.url.apiCartProduct;
         const data = {
             cart: "/api/carts/" + state.cart.id,
