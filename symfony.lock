@@ -219,6 +219,9 @@
     "php-translation/symfony-storage": {
         "version": "2.3.1"
     },
+    "php-webdriver/webdriver": {
+        "version": "1.12.1"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -558,6 +561,15 @@
     },
     "symfony/options-resolver": {
         "version": "v5.2.12"
+    },
+    "symfony/panther": {
+        "version": "1.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "877d853a05c6713665a2f4b954734592680abff6"
+        }
     },
     "symfony/phpunit-bridge": {
         "version": "6.0",

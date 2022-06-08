@@ -57,10 +57,10 @@
                                 {%endif%}
                         </td>
                         <td>
-                            {% user.facebookId %}+{% endif %}
+                            {% if user.facebookId %}+{% endif %}
                         </td>
                         <td>
-                            {% user.googleId %}+{% endif %}
+                            {% if user.googleId %}+{% endif %}
                         </td>
                         <td>
                             <a href="{{ path('admin_user_edit', {'id': user.id}) }}"
